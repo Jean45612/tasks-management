@@ -15,13 +15,15 @@ import { LoginComponent } from './components/login/login.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorComponent } from './utils/forms/error/error.component';
+import { NavbarComponent } from './layout/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     TasksComponent,
-    ErrorComponent
+    ErrorComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

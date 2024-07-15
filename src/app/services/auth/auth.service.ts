@@ -5,7 +5,7 @@ import { AppState } from '../../store/app.states';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { selectAuthenticated, selectUserName } from '../../store/selectors/auth.selectors';
-import { Logout } from '../../store/actions/auth.actions';
+import { LogOut } from '../../store/actions/auth.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -36,6 +36,6 @@ export class AuthService {
   }
 
   public logout() {
-    this.store.dispatch(Logout());
+    this.store.dispatch(LogOut());
   }
 }

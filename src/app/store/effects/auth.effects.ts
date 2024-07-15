@@ -4,7 +4,8 @@ import {
   LogIn,
   LogInSuccess,
   LogInFailure,
-  Logout,
+  LogOut,
+  LogOutSuccess,
 } from '../actions/auth.actions';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap, tap } from 'rxjs/operators';
@@ -61,10 +62,21 @@ export class AuthEffects {
     { dispatch: false }
   );
 
-  LogOut = createEffect(
+  LogOut$ = createEffect(
     () =>
       this.actions.pipe(
-        ofType(Logout)
-      )
+        ofType(LogOut),
+        map(() => LogOutSuccess()) )
+  );
+
+  LogOutSuccess$ = createEffect(
+    () =>
+      this.actions.pipe(
+        ofType(LogOutSuccess),
+        tap(() => {
+          this.router.navigate(['/login']);
+        })
+      ),
+    { dispatch: false }
   );
 }
