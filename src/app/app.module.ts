@@ -11,19 +11,28 @@ import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { ROOT_REDUCERS } from './store/app.states';
 import { AuthEffects } from './store/effects/auth.effects';
+import { LoginComponent } from './components/login/login.component';
+import { TasksComponent } from './components/tasks/tasks.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ErrorComponent } from './utils/forms/error/error.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    TasksComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     StoreModule.forRoot(ROOT_REDUCERS),
-    EffectsModule.forRoot([AuthEffects])
+    EffectsModule.forRoot([AuthEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

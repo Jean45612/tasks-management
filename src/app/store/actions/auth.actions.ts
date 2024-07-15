@@ -4,7 +4,8 @@ import { LoginRequest } from "../../services/auth/auth.interface";
 export enum AuthActionTypes {
     LOGIN = '[Auth] Login',
     LOGIN_SUCCESS = '[Auth] Login Success',
-    LOGIN_FAILURE = '[Auth] Login Failure'
+    LOGIN_FAILURE = '[Auth] Login Failure',
+    LOGOUT = '[Auth] Logout'
 }
 
 export const LogIn = createAction(
@@ -20,4 +21,8 @@ export const LogInSuccess = createAction(
 export const LogInFailure = createAction(
   AuthActionTypes.LOGIN_FAILURE,
   props<{ error: string }>()
+)
+
+export const Logout = createAction(
+  AuthActionTypes.LOGOUT
 )

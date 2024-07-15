@@ -1,0 +1,57 @@
+<div class="mt-4 col-6 offset-3">
+  <div class="card">
+    <div class="card-header">LOGIN</div>
+    <div class="card-body">
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="onSubmit()"
+        class="px-4 d-flex flex-wrap"
+        autocomplete="off"
+      >
+        <div class="col-sm-6 col-12">
+          <div class="form-group">
+            <label for="userName" class="form-label">Usuario</label>
+            <input
+              type="email"
+              class="form-control"
+              id="userName"
+              formControlName="userName"
+            />
+            <app-error [control]="loginForm.get('userName')" />
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <div class="password-input-wrapper">
+              <input
+                [type]="showPassword ? 'text' : 'password'"
+                class="form-control"
+                id="password"
+                formControlName="password"
+              />
+              <img
+                [src]="
+                  !showPassword
+                    ? 'assets/icons/open_eye.svg'
+                    : 'assets/icons/close_eye.svg'
+                "
+                alt=""
+                (click)="tooglePasswordVisibility()"
+              />
+            </div>
+            <app-error [control]="loginForm.get('password')"/>
+          </div>
+
+          <div class="alert alert-danger w-100" *ngIf="error">
+            {{error}}
+          </div>
+        </div>
+        <div
+          class="col-sm-6 col-12 d-flex align-items-center justify-content-center"
+        >
+          <button type="submit" class="btn btn-primary">Ingresar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

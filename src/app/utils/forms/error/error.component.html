@@ -1,0 +1,9 @@
+<div
+  *ngIf="isControlInvalid()"
+  class="text-danger"
+>
+  <ng-container *ngFor="let error of getErrors()">
+    {{error}}
+    <br>
+  </ng-container>
+</div>
