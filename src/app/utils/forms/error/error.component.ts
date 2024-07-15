@@ -9,6 +9,7 @@ import { AbstractControl, FormControl } from '@angular/forms';
 
 export class ErrorComponent {
   @Input() control: AbstractControl | null = null;
+  @Input() patternErrorMessage: string | null = null;
 
   isControlInvalid() {
     return this.control?.invalid && (this.control?.dirty || this.control?.touched);
@@ -27,7 +28,8 @@ export class ErrorComponent {
     const mensajes: any = {
       required: 'El campo es requerido.',
       minlength: `El mínimo de caracteres es ${errorValue.requiredLength}.`,
-      email: 'El email no tiene un formato válido.'
+      email: 'El email no tiene un formato válido.',
+      alphanumeric: 'El campo solo permite caracteres alfanuméricos'
     };
 
     return mensajes[errorKey] || 'Error desconocido';

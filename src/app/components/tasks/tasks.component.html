@@ -1,1 +1,29 @@
-<p>tasks works!</p>
+<div class="card mt-5 col-6 offset-1">
+  <div class="card-header">Lista de tareas</div>
+  <div class="card-body">
+    <form
+      class="d-flex flex-wrap"
+      [formGroup]="taskForm"
+      (ngSubmit)="addTask()"
+    >
+      <p class="col-md-1 col-6">Tarea:</p>
+      <div class="col-md-7 col-12">
+        <input type="text" class="form-control" formControlName="task" />
+        <app-error [control]="taskForm.get('task')" />
+      </div>
+      <div class="col-md-2 col-2 ms-3">
+        <button class="btn btn-secondary" type="submit" [disabled]="!taskForm.valid">Agregar</button>
+      </div>
+    </form>
+
+    <div class="border border-secondary mt-3 rounded p-3" *ngIf="tasks.length">
+      <div class="form-check" *ngFor="let task of tasks; trackBy: identify">
+        <input class="form-check-input" type="checkbox" [value]="task.checked" [id]="'task-'+ task.id" (change)="checkUnCheck(task)">
+        <label class="form-check-label" [for]="'task-'+ task.id">
+          {{ task.description }}
+          <span (click)="deleteTask(task.id)" class="pointer ml-5" *ngIf="!task.checked">X</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
